@@ -5,6 +5,7 @@ Implementing RMSE &amp; MAE in kstats (Kotlin)
 Issue: https://github.com/Oremif/kstats/issues/52
 
 Commented: Hello! I'm a student at AI301. I'd like to work on this issue, if it is not being worked on. I'm new to Kotlin, but I'd like to give it a try!
+
 No maintainer reply yet, but active repo.
 
 ## Why I Chose This Issue
