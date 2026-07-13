@@ -39,13 +39,12 @@ As the issue I selected is not a bug, but a request to implement two prediction-
 2. JDK 21 required (project uses jvmToolchain(21))
 3. Run existing kstats-core tests to confirm environment works
 3. ./gradlew :kstats-core:jvmTest
-'''
-kotlin// No external libraries needed — kstats-core has no runtime dependencies.
+
+```kotlin// No external libraries needed — kstats-core has no runtime dependencies.
 // Only kotlin.math (sqrt) is used, which is part of the Kotlin standard library.
 import kotlin.math.sqrt
 import kotlin.math.abs
-
-'''
+```
 Working branch: https://github.com/sheetalsattiraju/kstats/tree/52-sheetal-sattiraju-ai301
 
 ## Steps to Reproduce
