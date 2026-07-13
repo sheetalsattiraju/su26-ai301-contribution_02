@@ -52,7 +52,7 @@ Working branch: https://github.com/sheetalsattiraju/kstats/tree/52-sheetal-satti
 None, as it is not a bug and is a feature enhancement request.
 
 ## Solution Plan
-**Understand:** The issue requests two prediction-error metrics — RMSE (Root Mean Square Error) and MAE (Mean Absolute Error) — be added to kstats-core's descriptive statistics. The solution should follow the project's existing extension-function style on DoubleArray, with typed validation and full KDoc, and would be located in the core descriptive-statistics source file (per CONTRIBUTING.md, likely alongside dispersion measures like meanAbsoluteDeviation()). A corresponding test file in kstats-core/src/commonTest/... should be added as well. These are the files to modify/add, along with the .api dump files regenerated via ./gradlew apiDump (required since the project has explicitApi() enabled).
+**Understand:** The issue asks for two prediction-error metrics — RMSE (Root Mean Square Error) and MAE (Mean Absolute Error) to be added to kstats-core's descriptive statistics. The solution should follow the project's existing extension-function style on DoubleArray. After adding these metrics, two test files in kstats-core/src/commonTest/ should be added as well. These are the files to modify/add, along with the .api dump files regenerated via ./gradlew apiDump.
 
 **Match:** The existing meanAbsoluteDeviation() function is structurally similar to MAE (both average absolute deviations across an array) and can be used as a template; the existing variance()/standardDeviation() implementation is similarly close to RMSE's squared-difference-then-sqrt pattern.
 
