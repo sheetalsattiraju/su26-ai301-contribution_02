@@ -6,7 +6,9 @@ Issue: https://github.com/Oremif/kstats/issues/52
 
 Commented: Hello! I'm a student at AI301. I'd like to work on this issue, if it is not being worked on. I'm new to Kotlin, but I'd like to give it a try!
 
-No maintainer reply yet, but active repo.
+Maintainer reply: 
+@sheetalsattiraju Yes, sure, thanks a lot!
+If you need help, feel free to reach out
 
 ## Why I Chose This Issue
 I chose issue #52 because I have experience in these types of regression metrics from work and prior school projects. However, I have not worked with Kotlin before, but I have seen C-type syntax before and would like to get comfortable working in this syntax. The issue is labelled as "good for new contributers", so it aligns with my few experiences in open source contribution. 
