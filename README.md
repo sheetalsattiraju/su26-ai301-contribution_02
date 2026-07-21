@@ -110,19 +110,20 @@ For this issue, I decided to work on RMSE and MAE (prediction error metrics) for
     rmse(actual, predicted) // => 0.2449...
     mae(actual, predicted)  // => 0.225
     ```
-Working branch: https://github.com/sheetalsattiraju/kstats/tree/52-sheetal-sattiraju-ai301
-
+    
 **Progress:**
 What I built:
-* Implemented rmse() and mae() as extension functions on DoubleArray, matching the existing kstats-core style (e.g. meanAbsoluteDeviation(), variance()).
-* Verified output against the issue's own example values (rmse(actual, predicted) // => 0.2449..., mae(actual, predicted) // => 0.225) as well as an independent NumPy/SciPy calculation on the same arrays.
-* Tested a few edge cases privately: identical arrays (zero error), a single large outlier vs. many small errors (to confirm RMSE penalizes it more than MAE), and mismatched array lengths.
+* Implemented rmse() and mae() as functions (3 versions: DoubleArray, Iterable<Double> and Sequence<Double>)
+* Verified output against the issue's own example values (rmse(actual, predicted) // => 0.2449..., mae(actual, predicted) // => 0.225)
+* Tested a few edge cases privately: identical arrays (zero error), a single large outlier vs many small errors (to confirm RMSE penalizes it more than MAE), and mismatched array lengths.
+* Progress in branch: kstats-core/src/commonMain/kotlin/org/oremif/kstats/descriptive/RegressionMetrics.kt
 
 **Challenges faced:**
 * Deciding exactly which file the functions belong in
 * Kotlin is new to me, so working with the syntax took a bit of effort.
+* Understanding the need for 3 different versions of the functions.
 
 **Next week:**
-* Implement a test file with the edge cases above and others
-* Double-check the math against another implementation
+* Implement a test file with the edge cases above and others.
+* Double-check the math against another implementation.
 * Add KDoc description of each metric and its formula at the top of the implementation, plus run ./gradlew apiDump and confirm ./gradlew apiCheck passes before opening the PR.
