@@ -82,3 +82,47 @@ None, as it is not a bug and is a feature enhancement request.
 **RMSE/MAE-specific edge cases:**
 All errors identical in magnitude → RMSE and MAE should be equal (since squaring/rooting a constant equals the constant)
 Errors of mixed sign → confirms MAE correctly takes abs() and RMSE correctly squares (sign cancels) rather than allowing errors to offset each other
+
+# Phase III
+**Implementation Notes:**
+For this issue, I decided to work on RMSE and MAE (prediction error metrics) for kstats-core. Some notes on the math behind the metrics:
+* RMSE (Root Mean Square Error) = √(Σ(actual − predicted)² / n) -- Squares each error before averaging, then takes the square root
+  * Returns a value in same units as the original data
+  * Ranges from 0.0-inf
+* MAE (Mean Absolute Error) = Σ|actual − predicted| / n
+  * Averages the absolute value of each error
+  * Also in the same units as the original data
+
+**Importance of metrics:**
+* Comparing RMSE and MAE on the same data tells you whether errors are dominated by a few large misses (RMSE ≫ MAE) or spread evenly (RMSE ≈ MAE).
+* Both are used for evaluatin in regression, recommender systems, and forecasting/
+
+**Base skeleton logic:**
+* Validate that actual and predicted are the same length
+* For RMSE: square each difference, average, take the square root.
+* For MAE: take the absolute value of each difference, average.
+* Return the resulting Double
+  * Example provided by maintainer:
+    ```
+    val actual = doubleArrayOf(3.0, 5.0, 2.5, 7.0)
+    val predicted = doubleArrayOf(2.8, 5.2, 2.1, 6.8)
+    
+    rmse(actual, predicted) // => 0.2449...
+    mae(actual, predicted)  // => 0.225
+    ```
+Working branch: https://github.com/sheetalsattiraju/kstats/tree/52-sheetal-sattiraju-ai301
+
+**Progress:**
+What I built:
+* Implemented rmse() and mae() as extension functions on DoubleArray, matching the existing kstats-core style (e.g. meanAbsoluteDeviation(), variance()).
+* Verified output against the issue's own example values (rmse(actual, predicted) // => 0.2449..., mae(actual, predicted) // => 0.225) as well as an independent NumPy/SciPy calculation on the same arrays.
+* Tested a few edge cases privately: identical arrays (zero error), a single large outlier vs. many small errors (to confirm RMSE penalizes it more than MAE), and mismatched array lengths.
+
+**Challenges faced:**
+* Deciding exactly which file the functions belong in
+* Kotlin is new to me, so working with the syntax took a bit of effort.
+
+**Next week:**
+* Implement a test file with the edge cases above and others
+* Double-check the math against another implementation
+* Add KDoc description of each metric and its formula at the top of the implementation, plus run ./gradlew apiDump and confirm ./gradlew apiCheck passes before opening the PR.
